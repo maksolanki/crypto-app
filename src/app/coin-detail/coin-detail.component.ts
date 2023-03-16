@@ -31,8 +31,8 @@ export class CoinDetailComponent implements OnInit ,AfterViewInit{
   marketCapRank;
   currentPrise;
   marketCap;
-  currency = "inr"
-  currencyPipe = "INR"
+  currency = "usd"
+  currencyPipe = "USD"
   chartOptions: Highcharts.Options;
 
   constructor(private apiService: ApiService,
@@ -106,6 +106,7 @@ export class CoinDetailComponent implements OnInit ,AfterViewInit{
       this.chartOptions = {
 
         chart: {
+          backgroundColor:'#F1F5F9',
           width: 800,
           height: 650,
         },
