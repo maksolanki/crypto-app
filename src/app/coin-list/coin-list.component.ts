@@ -4,6 +4,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {Router} from "@angular/router";
 import {Observable, Subject} from "rxjs";
+import {MatSort, Sort} from "@angular/material/sort";
+import {LiveAnnouncer} from "@angular/cdk/a11y";
 
 
 @Component({
@@ -17,11 +19,12 @@ export class CoinListComponent implements OnInit {
   displayedColumns: string[] = ['symbol', 'current_price', 'price_change_percentage_24h', 'market_cap'];
   dataSource: MatTableDataSource<any>
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private ApiService: ApiService,
-              private router: Router) {
+              private router: Router,
+              private _liveAnnouncer: LiveAnnouncer) {
   }
-
   getCoinData(){
     this.ApiService.getAllData(this.currency).subscribe(res => {
       this.dataSource = new MatTableDataSource(res);
@@ -31,7 +34,6 @@ export class CoinListComponent implements OnInit {
       this.bannerData = res
     })
   }
-
   currancy() {
     if (this.currency == "INR") {
       this.currency = "USD";
@@ -40,7 +42,6 @@ export class CoinListComponent implements OnInit {
     }
     this.getCoinData();
   }
-
   ngOnInit() {
    this.getCoinData()
   }
@@ -57,4 +58,14 @@ export class CoinListComponent implements OnInit {
   gotoDetails(row: any) {
     this.router.navigate(['coin-detail', row.id])
   }
+
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+
 }

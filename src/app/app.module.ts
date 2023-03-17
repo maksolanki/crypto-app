@@ -14,6 +14,7 @@ import {CoinDetailComponent} from './coin-detail/coin-detail.component';
 import {NgChartsModule} from 'ng2-charts';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {HighchartsChartModule} from "highcharts-angular";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -34,7 +35,8 @@ import {HighchartsChartModule} from "highcharts-angular";
     MatSortModule,
     NgChartsModule,
     MatToolbarModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    MatButtonModule
 
   ],
   providers: [],

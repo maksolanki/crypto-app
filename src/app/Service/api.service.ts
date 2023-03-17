@@ -26,7 +26,7 @@ export class ApiService {
   }
 
   getOhlcData(coinID , currancy){
-    return this.http.get(`https://api.coingecko.com/api/v3/coins/${coinID}/ohlc?vs_currency=${currancy}&days=1`)
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${coinID}/ohlc?vs_currency=${currancy}&days=max`)
   }
 }
 

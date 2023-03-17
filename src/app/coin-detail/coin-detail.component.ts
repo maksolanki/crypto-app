@@ -16,47 +16,74 @@ HAnnotationsAdvanced(Highcharts);
 HPriceIndicator(Highcharts);
 HStockTools(Highcharts);
 
-
 @Component({
   selector: 'app-coin-detail',
   templateUrl: './coin-detail.component.html',
   styleUrls: ['./coin-detail.component.scss']
 })
-export class CoinDetailComponent implements OnInit ,AfterViewInit{
+export class CoinDetailComponent implements OnInit, AfterViewInit {
   data;
   name;
   image;
   coinId;
-  discription;
-  marketCapRank;
+  marketCapRank = 1;
   currentPrise;
   marketCap;
   currency = "usd"
   currencyPipe = "USD"
   chartOptions: Highcharts.Options;
+  high_24hs;
+  low_24hs;
+  Highcharts: typeof Highcharts = Highcharts;
+  width
 
   constructor(private apiService: ApiService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
 
-  Highcharts: typeof Highcharts = Highcharts;
-  width = "40%"
-
-  @ViewChild('chartDiv')
-  chartDiv:ElementRef
+  @ViewChild('divEl')
+  chartDiv: ElementRef
 
   ngOnInit() {
-
+    console.log("init")
     this.activatedRoute.params.subscribe(val => {
       this.coinId = val['id'];
     });
+    this.ploteChart()
     this.getData()
   }
+
+  ploteChart() {
+    this.chartOptions = {
+      chart: {
+        backgroundColor: '#F1F5F9',
+      },
+      plotOptions: {
+        candlestick: {
+          upColor: "green",
+          color: "red"
+        },
+      },
+      series: [
+        {
+          type: 'candlestick',
+          id: "base",
+          pointInterval: 24 * 3600 * 1000,
+
+        }
+      ]
+    }
+  }
+
   ngAfterViewInit() {
-    let width = this.chartDiv.nativeElement.offsetWidth
-    let Height = this.chartDiv.nativeElement.offsetHeight
-    console.log(width , Height)
+    this.width = this.chartDiv.nativeElement.offsetWidth
+    this.chartOptions = {
+      chart: {
+        width: this.width,
+        height: 510
+      }
+    }
   }
 
 
@@ -72,12 +99,10 @@ export class CoinDetailComponent implements OnInit ,AfterViewInit{
       this.currency = "inr";
       this.currencyPipe = "INR"
     }
-
     this.getData()
   }
 
   getData() {
-
     this.activatedRoute.params.subscribe(val => {
       this.coinId = val['id'];
     });
@@ -86,16 +111,21 @@ export class CoinDetailComponent implements OnInit ,AfterViewInit{
       console.log(res)
       this.data = res;
       this.name = this.data.name
-      this.discription = this.data.description.en.split('. ')[0]
-      this.image = this.data.image.large
+      this.image = this.data.image.small
       this.marketCapRank = this.data.market_cap_rank;
       if (this.currency === "usd") {
         this.currentPrise = this.data.market_data.current_price.usd;
         this.marketCap = this.data.market_data.market_cap.usd;
+        this.high_24hs = this.data.market_data.high_24h.usd;
+        this.low_24hs = this.data.market_data.low_24h.usd
         console.log(this.marketCap)
-      }else {
+      } else {
         this.currentPrise = this.data.market_data.current_price.inr;
         this.marketCap = this.data.market_data.market_cap.inr;
+        this.high_24hs = this.data.market_data.high_24h.inr;
+        this.low_24hs = this.data.market_data.low_24h.inr
+
+
         console.log(this.marketCap)
       }
 
@@ -105,17 +135,6 @@ export class CoinDetailComponent implements OnInit ,AfterViewInit{
       this.data = res
       this.chartOptions = {
 
-        chart: {
-          backgroundColor:'#F1F5F9',
-          width: 800,
-          height: 650,
-        },
-        plotOptions: {
-          candlestick: {
-            upColor: "green",
-            color: "red"
-          },
-        },
         series: [
           {
             type: 'candlestick',
@@ -125,7 +144,6 @@ export class CoinDetailComponent implements OnInit ,AfterViewInit{
           }
         ]
       }
-      // console.log(this.data)
     })
 
   }

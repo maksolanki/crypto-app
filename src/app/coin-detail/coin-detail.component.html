@@ -1,92 +1,93 @@
-<mat-toolbar class="flex justify-between bg-slate-100">
-  <span>CRYPTO CHECKER</span>
+<mat-toolbar class="flex justify-between bg-slate-100	">
+  <span class="">CRYPTO CHECKER</span>
   <span class="example-spacer"></span>
-  <button (click)="currancy()" class="bg-blue-500 hover:bg-blue-700 text-white  py-1.5 px-4 rounded">
-    {{currency |uppercase}}
-  </button>
+  <button (click)="currancy()" mat-stroked-button color="primary" class="py-1.5 px-4">{{currency | uppercase}}</button>
 
 </mat-toolbar>
+<div class=" mx-auto container ">
+  <div class="">
+    <nav class="flex" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a (click)="home()"
+             class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+            <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd"></path>
+            </svg>
+            <a
+              class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{{name}}</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
 
-<div class="container mx-auto ">
-  <nav class="flex" aria-label="Breadcrumb">
-    <ol class="inline-flex items-center space-x-1 md:space-x-3">
-      <li class="inline-flex items-center">
-        <a (click)="home()"
-           class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-          <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
-               xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-          </svg>
-          Home
-        </a>
-      </li>
-      <li>
-        <div class="flex items-center">
-          <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-               xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                  clip-rule="evenodd"></path>
-          </svg>
-          <a
-            class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">{{name}}</a>
+    <div class="" #divEl>
+      <div class="w-full flex gap-3">
+        <div>
+          <img class="object-contain" src="{{image}}">
         </div>
-      </li>
-    </ol>
-  </nav>
-
-
-  <div class="grid   grid-rows-2 ">
-    <div class=" w-full grid grid-cols-3 ">
-      <img class="" src="{{image}}">
-      <div class="col-span-1">
-        <h1 class="text-2xl"> {{name | uppercase}}</h1>
-        <h1 class="text-xl" [innerHtml]="discription"></h1>
-        <h2 class="text-xl mt-5 "><span class="font-bold	">Market Cap Rank: </span> <span>{{marketCapRank}}</span>
-        </h2>
-        <h2 class="text-xl mt-5"><span class="font-bold"> Current Market Price: </span>
-          <span>{{currentPrise |currency:currencyPipe}}</span></h2>
-        <h2 class="text-xl mt-5"><span class="font-bold"> Market Capital: </span>
-          <span>{{marketCap | currency:currencyPipe}}</span></h2>
+        <div class="sm:block gap-4 md:flex">
+          <h2 class="text-base	"><span>Market Cap Rank: </span>
+            <span>{{marketCapRank}}</span>
+          </h2>
+          <h2 class="text-base	"><span>Current Market Price: </span>
+            <span>{{currentPrise |currency:currencyPipe}}</span>
+          </h2>
+        </div>
+        <div class="sm:block gap-4 md:flex">
+          <h2 class="text-base	"><span>High of 24h: </span>
+            <span class="text-green-800 ">{{high_24hs |currency:currencyPipe}}</span>
+          </h2>
+          <h2 class="text-base	"><span>Low Of 24h: </span>
+            <span class="text-red-700">{{low_24hs |currency:currencyPipe}}</span>
+          </h2>
+        </div>
       </div>
+
     </div>
 
-    <div  class="w-full " #chartDiv width='100%'>
-      <highcharts-chart
-        [Highcharts]="Highcharts"
-        [constructorType]="'stockChart'"
-        [options]="chartOptions">
-      </highcharts-chart>
-    </div>
+    <!--    <div class="h-auto grid grid-cols-2 md:grid-cols-3:col-span-3 col-span-2 gap-5 h-5">-->
+    <!--      <div class="grid  md:grid-cols-1 lg:grid-cols-2 lg:gap-5">-->
+    <!--        <img class="object-contain" style="width: 20%;" src="{{image}}">-->
+    <!--        <div>-->
+    <!--          <h1 class="sm:text-sm md:text-4xl"> {{name | uppercase}}</h1>-->
+    <!--          <h2 class="sm:text-sm md:text-2xl  "><span class="font-bold	">Market Cap Rank: </span>-->
+    <!--            <span>{{marketCapRank}}</span>-->
+    <!--          </h2>-->
+    <!--          <h2 class="sm:text-sm md:text-2xl"><span class="font-bold"> Current Market Price: </span>-->
+    <!--            <span>{{currentPrise |currency:currencyPipe}}</span></h2>-->
+    <!--          <h2 class="text-sm md:text-2xl"><span class="font-bold"> Market Capital: </span>-->
+    <!--            <span>{{marketCap | currency:currencyPipe}}</span></h2>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--      <div class="col-span-1">-->
+    <!--        <h1 class="text-lg sm:text-lg md:text-3xl" [innerHtml]="discription"></h1>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--    <div class="">-->
+    <!--  </div>-->
+
 
   </div>
 
+
+  <highcharts-chart class="overflow-scroll"
+                    [Highcharts]="Highcharts"
+                    [constructorType]="'stockChart'"
+                    [options]="chartOptions">
+  </highcharts-chart>
+
 </div>
-
-
-<!--<div class="  items-center justify-center  justify-around">-->
-<!--  <div class="flex flex-column-reverse gap-5">-->
-<!--    <div class="w-1/4">-->
-<!--      <img class="p-10" src="{{image}}">-->
-<!--      <h1 class="text-4xl "> {{name | uppercase}}</h1>-->
-<!--      <h1 class="text-2xl" [innerHtml]="discription"></h1>-->
-<!--      <div>-->
-<!--        <h2 class="text-2xl mt-5 "><span class="font-bold	">Market Cap Rank: </span> <span>{{marketCapRank}}</span>-->
-<!--        </h2>-->
-<!--        <h2 class="text-2xl mt-5"><span class="font-bold"> Current Market Price: </span>-->
-<!--          <span>{{currentPrise |currency:currencyPipe}}</span></h2>-->
-<!--        <h2 class="text-2xl mt-5"><span class="font-bold"> Market Capital: </span>-->
-<!--          <span>{{marketCap | currency:currencyPipe}}</span></h2>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="">-->
-<!--      <highcharts-chart-->
-<!--        [Highcharts]="Highcharts"-->
-<!--        [constructorType]="'stockChart'"-->
-<!--        [options]="chartOptions">-->
-<!--      </highcharts-chart>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--</div>-->
