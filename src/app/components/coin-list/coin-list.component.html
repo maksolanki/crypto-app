@@ -4,6 +4,7 @@
   <button (click)="getCurrency()" mat-stroked-button color="primary" class="py-1.5 px-4">{{currency}}</button>
 </mat-toolbar>
 
+
 <div class="container mx-auto">
   <div class="w-full flex	header">
     <div class="header">
@@ -14,7 +15,7 @@
 
   <div class="banner">
     <div class="mt-16 ">
-      <marquee behavior="scroll" onmouseover="stop()" onmouseout="start()" loop="infinite" direction="left">
+      <marquee onmouseover="stop()" onmouseout="start()" direction="left">
         <div class="flex gap-5">
           <ng-container *ngFor="let coinTableRow of bannerData">
             <div class="col-1">
