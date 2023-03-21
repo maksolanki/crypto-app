@@ -15,10 +15,11 @@
 
   <div class="banner">
     <div class="mt-16 ">
-      <marquee onmouseover="stop()" onmouseout="start()" direction="left">
-        <div class="flex gap-5">
+
+      <div class="marquee-container">
+        <div class="flex gap-5 marquee-content">
           <ng-container *ngFor="let coinTableRow of bannerData">
-            <div class="col-1">
+            <div class="w-1/6">
               <div class="card">
                 <img [src]="coinTableRow.image" style="height:85px" width="100" class="mb-1" alt="">
                 <div class="card-body">
@@ -30,7 +31,7 @@
             </div>
           </ng-container>
         </div>
-      </marquee>
+      </div>
 
     </div>
   </div>

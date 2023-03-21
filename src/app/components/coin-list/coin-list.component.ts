@@ -58,6 +58,9 @@ export class CoinListComponent implements OnInit, OnDestroy {
     if (this.coinData.paginator) {
       this.coinData.paginator.firstPage();
     }
+    else{
+
+    }
   }
 
   gotoDetails(allCoinTableRow: { id: string }):void{

@@ -35,3 +35,21 @@ img[_ngcontent-yqd-c145], video[_ngcontent-yqd-c145] {
  box-shadow: none !important;
 }
 
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+}
+.marquee-content {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
