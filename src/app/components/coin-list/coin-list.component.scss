@@ -1,5 +1,6 @@
-@import "src/app/app.component.scss";
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .header {
   display: flex;
@@ -27,23 +28,12 @@ img[_ngcontent-yqd-c145], video[_ngcontent-yqd-c145] {
   padding: 4px;
 }
 
-//.mat-mdc-form-field{
-//  width: 100%;
-//}
 .banner{
   height: 200px;
   width: 100%;
 }
 
-.justify-between[_ngcontent-pqd-c151]{
-  //background: aliceblue;
-}
-
-.text-slate-50{
- // background: aliceblue;
-}
-
-
 :host::ng-deep .mat-elevation-z8{
  box-shadow: none !important;
 }
+

@@ -1,6 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CoinDetailComponent } from './coin-detail.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {CoinDetailComponent} from './coin-detail.component';
 
 describe('CoinDetailComponent', () => {
   let component: CoinDetailComponent;
@@ -8,9 +7,9 @@ describe('CoinDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CoinDetailComponent ]
+      declarations: [CoinDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(CoinDetailComponent);
     component = fixture.componentInstance;

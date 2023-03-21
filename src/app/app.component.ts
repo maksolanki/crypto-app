@@ -1,7 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {LiveAnnouncer} from "@angular/cdk/a11y";
-import {MatSort, Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-root',
@@ -13,4 +10,5 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
   }
+
 }

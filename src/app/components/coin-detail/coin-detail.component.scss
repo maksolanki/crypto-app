@@ -1,4 +1,6 @@
-@import "src/app/app.component.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "https://code.highcharts.com/css/stocktools/gui.css";
 @import "https://code.highcharts.com/css/annotations/popup.css";
 
